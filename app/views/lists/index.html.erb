@@ -1,9 +1,11 @@
+<%= link_to "Add a new list here", new_list_path %>
+
 <h1>All Lists</h1>
 
 
 <% @lists.each do |list| %>
   <h3><%= link_to list.name, list_path(list) %></h3>
+  <% if list.photo.present? %>
+    <%= cl_image_tag list.photo.key, height: 300, width: 300, crop: :fill %>
+  <% end %>
 <% end %>
-
-
-<%= link_to "Add a new list here", new_list_path %>
